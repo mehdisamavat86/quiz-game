@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@quiz/*": ["./src/*"]
+      "@quiz/*": ["./src/core/*"],
+      "@quiz-mock/*": ["./src/mock/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
