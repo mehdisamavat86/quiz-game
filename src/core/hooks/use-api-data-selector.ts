@@ -6,5 +6,5 @@ export default function useApiDataSelector<T = any>(
   defaultValue?: any
 ) {
   const apiKey = getApiCachKey(key);
-  return getStorageItem(apiKey, defaultValue) as T | null;
+  return getStorageItem(apiKey, defaultValue, true) as T | null;
 }

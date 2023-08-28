@@ -14,14 +14,19 @@ export function setStorageItem(
   return data;
 }
 
-export function getStorageItem(key: string, defaultValue?: any) {
+export function getStorageItem(
+  key: string,
+  defaultValue?: any,
+  skipCheckingExpiration = false
+) {
   if (globalThis.localStorage) {
     const data = localStorage.getItem(key);
     try {
       if (data) {
         const value = JSON.parse(data);
         if (value.expireAt) {
-          if (value.expireAt >= Date.now()) return value.data;
+          if (skipCheckingExpiration || value.expireAt >= Date.now())
+            return value.data;
           else localStorage.removeItem(key);
         } else return value;
       }

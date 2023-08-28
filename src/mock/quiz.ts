@@ -6,6 +6,7 @@ export const questions: QuizItemWithAnswer[] = range(1, 9).map(
   (questionId) => ({
     id: String(questionId),
     title: faker.lorem.sentence(),
+    imageUrl: faker.image.url(),
     answerOptions: range(1, 4).map((answerId) => ({
       id: String(answerId),
       title: faker.lorem.word(5),

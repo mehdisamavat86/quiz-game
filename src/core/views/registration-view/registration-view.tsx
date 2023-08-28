@@ -17,6 +17,7 @@ const RegistrationView = memo(() => {
           onChange={(x) => setName(x.currentTarget.value)}
           placeholder="Enter Your Name"
           size="small"
+          inputProps={{ maxLength: 50 }}
         />
       </Paper>
 

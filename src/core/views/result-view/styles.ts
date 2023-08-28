@@ -1,4 +1,4 @@
-import { Paper } from "@mui/material";
+import { CardContent as BaseCardContent } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { PageContainer } from "@quiz/layout";
 
@@ -9,23 +9,17 @@ export const Wrapper = styled(PageContainer)`
   gap: ${(p) => p.theme.spacing(2.5)};
 `;
 
-export const RusltWrapper = styled(Paper)`
+export const Content = styled("div")`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: ${(p) => p.theme.spacing(2)};
-  padding: ${(p) => p.theme.spacing(2)};
-  min-width: 360px;
+  flex-wrap: wrap;
+  gap: ${(p) => p.theme.spacing(2.5)};
+  height: 80%;
+  overflow-y: auto;
 `;
 
-export const AnswerWrapper = styled("div")`
+export const CardContent = styled(BaseCardContent)`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: space-between;
   gap: ${(p) => p.theme.spacing(1)};
-`;
-
-export const AnswerPaper = styled(Paper)`
-  padding: ${(p) => p.theme.spacing(1)};
 `;

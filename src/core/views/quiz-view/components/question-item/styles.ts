@@ -22,7 +22,7 @@ export const Ttile = styled(Typography)`
 `;
 
 export const Image = styled("img")<{ url: string }>`
-  background-image: url(${(p) => p.url});
+  background-image: url(${(p) => `/${p.url}`});
   width: 80px;
   height: 80px;
 `;

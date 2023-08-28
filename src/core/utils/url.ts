@@ -1,5 +1,5 @@
 import { API_SERVER } from "@quiz/constants";
-import { trim } from "lodash";
+import { trim, trimEnd } from "lodash";
 import q from "query-string";
 
 export function toUrlParams(data?: Record<string, any>) {
@@ -15,5 +15,5 @@ export function joinUrl(...paths: string[]) {
 }
 
 export function toApiServerUrl(path: string, data?: Record<string, any>) {
-  return `${joinUrl(API_SERVER, path)}?${toUrlParams(data)}`;
+  return trimEnd(`${joinUrl(API_SERVER, path)}?${toUrlParams(data)}`, "?");
 }

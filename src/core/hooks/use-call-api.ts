@@ -11,6 +11,7 @@ export default function useCallApi<Response>(
   options: RequestInit & { cacheKey?: string; cacheTime?: number } = {}
 ) {
   options.method = upperCase(options.method || "get");
+  options.mode = options.mode || "cors";
   options.cacheKey = getApiCachKey(options.cacheKey || path);
   options.cacheTime = options.cacheTime || API_CACHE_TIME;
   options.headers = options.headers || {};
@@ -20,7 +21,9 @@ export default function useCallApi<Response>(
   if (options.method !== "GET") {
     options.body = paramsHash;
     (options.headers as any)["Content-Type"] = "application/json";
-    (options.headers as any)["accept"] = "text/plain";
+    (options.headers as any)["Access-Control-Allow-Origin"] =
+      "http://localhost:3000";
+    (options.headers as any)["Access-Control-Allow-Credentials"] = true;
     params = {};
   }
 

@@ -23,25 +23,31 @@ const QuestionItem = memo(({ className }: Props) => {
 
   return (
     <Styled.Wrapper className={classnames("QuestionItem", className)}>
-      {loading && <LoadingScreen />}
+      {loading ? (
+        <LoadingScreen />
+      ) : (
+        item && (
+          <>
+            <Styled.Question>
+              <Styled.Ttile variant="body1">{item?.title} :</Styled.Ttile>
+              <Styled.Image url={item?.imageUrl} />
+            </Styled.Question>
 
-      <Styled.Question>
-        <Styled.Ttile variant="body1">{item?.title} :</Styled.Ttile>
-        <Styled.Image url={item?.imageUrl} />
-      </Styled.Question>
-
-      <Stack direction="column" justifyContent="center" gap={1}>
-        {item?.answerOptions.map((ans) => (
-          <Styled.Answer
-            key={ans.id}
-            data-id={ans.id}
-            variant="outlined"
-            onClick={handleSelectAns}
-          >
-            {ans.title}
-          </Styled.Answer>
-        ))}
-      </Stack>
+            <Stack direction="column" justifyContent="center" gap={1}>
+              {item?.answerOptions.map((ans) => (
+                <Styled.Answer
+                  key={ans.id}
+                  data-id={ans.id}
+                  variant="outlined"
+                  onClick={handleSelectAns}
+                >
+                  {ans.title}
+                </Styled.Answer>
+              ))}
+            </Stack>
+          </>
+        )
+      )}
     </Styled.Wrapper>
   );
 });
